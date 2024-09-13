@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salon de Thé M&C</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#about">La Maison</a></li>
+                <li><a href="#services">Nos Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <!-- Lien vers la section réservation -->
+                <li><a href="#reservation" class="reservation-btn">Réservation</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Section Accueil -->
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Salon de Thé M&C</h1>
+            <p>Un lieu de rencontre chaleureux, familial, et écoresponsable.</p>
+            <a href="#about" class="btn">Découvrez Notre Univers</a>
+        </div>
+    </section>
+
+    <!-- Section À Propos -->
+    <section id="about">
+        <h2>À propos de nous</h2>
+        <p>Je m’appelle Charlène MINGHI, pâtissière passionnée. Après avoir travaillé dans une boulangerie et obtenu mon BTS cuisine, j'ai créé ce salon de thé pour offrir à mes clients un espace convivial avec des produits écoresponsables et faits maison.</p>
+    </section>
+
+    <!-- Section Nos Valeurs -->
+    <section id="valeurs">
+        <h2>Nos Valeurs</h2>
+        <p>Nous croyons en la convivialité, la gourmandise, et surtout, l’écoresponsabilité. Nos produits sont garantis sans conservateur, 100% naturels et locaux. Nous pratiquons le recyclage et luttons contre le gaspillage alimentaire.</p>
+    </section>
+
+    <!-- Section Services -->
+    <section id="services">
+        <h2>Nos Services</h2>
+        <ul>
+            <li>Espace salon de thé ouvert toute la journée</li>
+            <li>Jeux de société disponibles</li>
+            <li>Service de restauration le midi</li>
+            <li>Brunch du dimanche</li>
+            <li>Soirées à thème</li>
+        </ul>
+    </section>
+
+    <!-- Section Réservation -->
+    <section id="reservation">
+        <h2>Réservez votre Brunch du Dimanche</h2>
+        <form action="submit_reservation.php" method="POST" id="reservation-form">
+            <label for="name">Nom :</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email :</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="guests">Nombre de personnes :</label>
+            <input type="number" id="guests" name="guests" min="1" max="10" required>
+
+            <label for="time">Heure de réservation :</label>
+            <select id="time" name="time" required>
+                <option value="10:00">10:00</option>
+                <option value="11:00">11:00</option>
+                <option value="12:00">12:00</option>
+                <option value="13:00">13:00</option>
+            </select>
+
+            <label for="preferences">Allergies (facultatif) :</label>
+            <input type="text" id="preferences" name="preferences" placeholder="Ex : végétarien, sans gluten, etc.">
+
+            <button type="submit">Réserver</button>
+        </form>
+    </section>
+
+    <!-- Pied de page -->
+    <footer>
+        <p>Contactez-nous : <a href="mailto:charleneminghi@gmail.com">charleneminghi@gmail.com</a></p>
+    </footer>
+
+</body>
+</html>
