@@ -1,17 +1,34 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+/* Couleurs personnalisées */
+:root {
+    --main-color: #4CAF50; /* Vert principal */
+    --pastel-green: #A8D5BA; /* Vert pastel */
+    --text-color: #333; /* Couleur principale du texte */
+    --bg-light: #f8f8f8; /* Couleur de fond clair */
+}
+
 /* Styles de base */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: var(--bg-light);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
 }
 
 header {
-    background-color: #333;
-    padding: 1rem;
+    background-color: var(--main-color);
+    padding: 1.5rem;
     color: white;
     text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 nav ul {
@@ -27,15 +44,17 @@ nav ul li a {
     text-decoration: none;
     font-size: 1.2rem;
     font-weight: bold;
+    padding-bottom: 0.5rem;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
 }
 
 nav ul li a:hover {
-    border-bottom: 2px solid #fff;
+    border-bottom: 2px solid white;
 }
 
 /* Section Hero */
 .hero {
-    background-image: url('https://source.unsplash.com/1600x900/?tea,cafe'); /* Remplace par une image locale si nécessaire */
+    background-image: url('https://source.unsplash.com/1600x900/?tea,cafe');
     background-size: cover;
     background-position: center;
     height: 80vh;
@@ -44,35 +63,80 @@ nav ul li a:hover {
     justify-content: center;
     text-align: center;
     color: white;
+    position: relative;
+    background-attachment: fixed;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 0;
 }
 
 .hero-text {
-    background-color: rgba(0, 0, 0, 0.6);
-    padding: 2rem;
+    z-index: 1;
+    transform: scale(0.8);
+    opacity: 0;
+    animation: fadeIn 2s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 .hero h1 {
     font-size: 4rem;
     margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    animation: slideDown 2s ease-out forwards;
+}
+
+@keyframes slideDown {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .hero p {
     font-size: 1.5rem;
     margin-bottom: 2rem;
+    opacity: 0;
+    animation: slideUp 2s ease-out forwards;
+}
+
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .btn {
-    background-color: #4CAF50;
+    background-color: var(--main-color);
     color: white;
     padding: 1rem 2rem;
     text-decoration: none;
     font-size: 1.2rem;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: scale(1);
 }
 
 .btn:hover {
     background-color: #333;
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* Sections Générales */
@@ -84,6 +148,7 @@ section {
 section h2 {
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
+    color: var(--text-color);
 }
 
 section p {
@@ -91,7 +156,7 @@ section p {
     line-height: 1.8;
 }
 
-/* Services */
+/* Section Services */
 #services ul {
     list-style-type: none;
     padding: 0;
@@ -102,9 +167,82 @@ section p {
     margin: 1rem 0;
 }
 
+/* Section Formules */
+#formules {
+    padding: 4rem 2rem;
+    background-color: var(--pastel-green);
+    text-align: center;
+}
+
+#formules h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+    font-weight: 700;
+}
+
+.formules-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.formule {
+    background-color: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 22%;
+    min-width: 250px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.formule:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.formule-header {
+    background-color: var(--main-color);
+    color: white;
+    border-radius: 10px 10px 0 0;
+    padding: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.formule-price h4 {
+    font-size: 2rem;
+    color: var(--text-color);
+    margin: 1rem 0;
+}
+
+.formule ul {
+    list-style: none;
+    padding: 0;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.formule ul li {
+    margin-bottom: 0.5rem;
+}
+
+@media screen and (max-width: 768px) {
+    .formules-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .formule {
+        width: 90%;
+    }
+}
+
 /* Section Réservation */
 #reservation {
-    background-color: #f8f8f8;
+    background-color: var(--pastel-green);
     padding: 4rem 2rem;
     text-align: center;
 }
@@ -121,6 +259,12 @@ section p {
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+#reservation form:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
 }
 
 #reservation form label {
@@ -131,37 +275,57 @@ section p {
 
 #reservation form input,
 #reservation form select {
-    width: 100%;
-    padding: 0.8rem;
-    margin-bottom: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    width: calc(100% - 20px);
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+#reservation form input:hover,
+#reservation form select:hover {
+    border-color: var(--main-color);
+}
+
+#reservation form input:focus,
+#reservation form select:focus {
+    border-color: var(--main-color);
+    outline: none;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+/* Style du bouton */
 #reservation form button {
-    background-color: #4CAF50;
+    background-color: var(--main-color);
     color: white;
-    padding: 1rem 2rem;
+    padding: 1rem 0;
     font-size: 1.2rem;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    font-weight: 600;
 }
 
 #reservation form button:hover {
     background-color: #333;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Footer */
 footer {
-    background-color: #333;
+    background-color: var(--main-color);
     color: white;
     text-align: center;
-    padding: 1rem;
+    padding: 1.5rem;
 }
 
 footer a {
-    color: #4CAF50;
+    color: white;
     text-decoration: none;
 }
 
