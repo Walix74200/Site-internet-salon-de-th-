@@ -18,7 +18,6 @@
                 <li><a href="#formules">Formules</a></li>
                 <li><a href="#menu">Carte des Menus</a></li>
                 <li><a href="#creations">Mes Créations</a></li>
-                <li><a href="#contact">Contact</a></li>
                 <li><a href="#reservation" class="reservation-btn">Réservation</a></li>
             </ul>
         </nav>
@@ -142,13 +141,32 @@
     <section id="menu">
         <h2>Carte des Menus</h2>
         <div class="menu-section">
-            <div class="menu-category">
-                <h3>Boissons Froides</h3>
-                <img src="Images/image00001.png" alt="Boissons Froides" class="menu-image">
+            <!-- Menu Boissons Froides -->
+            <div class="menu-book" id="menu-boissons">
+                <div class="menu-pages">
+                    <div class="page cover">
+                        <img src="Images/image00001.png" alt="Couverture Boissons Froides">
+                        <!-- Zone cliquable en bas à droite -->
+                        <div class="corner" data-book="menu-boissons"></div>
+                    </div>
+                    <div class="page content">
+                        <img src="Images/image00005.png" alt="Intérieur Boissons Froides">
+                    </div>
+                </div>
             </div>
-            <div class="menu-category">
-                <h3>Desserts</h3>
-                <img src="Images/image00002.png" alt="Desserts" class="menu-image">
+
+            <!-- Menu Desserts -->
+            <div class="menu-book" id="menu-desserts">
+                <div class="menu-pages">
+                    <div class="page cover">
+                        <img src="Images/image00004.png" alt="Couverture Desserts">
+                        <!-- Zone cliquable en bas à droite -->
+                        <div class="corner" data-book="menu-desserts"></div>
+                    </div>
+                    <div class="page content">
+                        <img src="Images/image00002.png" alt="Intérieur Desserts">
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -231,10 +249,10 @@
         <p>Contactez-nous : <a href="mailto:charleneminghi@gmail.com">charleneminghi@gmail.com</a></p>
     </footer>
 
-    <!-- Script JavaScript pour gérer l'affichage des sections -->
+    <!-- Script JavaScript pour les interactions -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Sélection des éléments
+            // Code pour la réservation
             const reservationLink = document.querySelector('.reservation-btn');
             const reservationSection = document.getElementById('reservation');
             const backToHomeBtn = document.getElementById('back-to-home');
@@ -258,6 +276,17 @@
                 nav.style.display = 'block';
                 // Masquer la section Réservation
                 reservationSection.style.display = 'none';
+            });
+
+            // Interaction pour les menus
+            const corners = document.querySelectorAll('.corner');
+
+            corners.forEach(function (corner) {
+                corner.addEventListener('click', function (e) {
+                    const bookId = e.target.getAttribute('data-book');
+                    const book = document.getElementById(bookId);
+                    book.classList.toggle('open');
+                });
             });
         });
     </script>
