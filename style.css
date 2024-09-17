@@ -191,6 +191,14 @@ nav ul li a:hover {
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
+<<<<<<< HEAD
+=======
+.gallery-item img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+>>>>>>> a9b49ba94207cb6a30bce721011d438e3a28ea74
 /* Sections Générales avec transition */
 section {
     position: relative;
@@ -221,6 +229,21 @@ section h2::after {
     border-radius: 5px;
 }
 
+<<<<<<< HEAD
+=======
+/* Animation au défilement */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+>>>>>>> a9b49ba94207cb6a30bce721011d438e3a28ea74
 /* Section Nos Services avec hover interactif */
 #services ul {
     list-style-type: none;
@@ -549,6 +572,10 @@ footer a:hover {
     color: #555;
 }
 
+<<<<<<< HEAD
+=======
+/* Effet d'apparition au survol */
+>>>>>>> a9b49ba94207cb6a30bce721011d438e3a28ea74
 .creation-item:hover .creation-text {
     opacity: 1;
     transform: translateY(-10px);
@@ -566,6 +593,10 @@ footer a:hover {
     }
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> a9b49ba94207cb6a30bce721011d438e3a28ea74
 /* Effet de défilement doux */
 html {
     scroll-behavior: smooth;
