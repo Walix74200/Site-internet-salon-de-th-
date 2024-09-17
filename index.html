@@ -32,13 +32,13 @@
         </div>
         <div class="hero-gallery">
             <div class="gallery-item">
-                <img src="Images/image00037.jpeg" alt="Salon de thé - Vue intérieure">
+                <img src="Images/image12.jpeg" alt="Salon de thé - Vue intérieure">
             </div>
             <div class="gallery-item">
-                <img src="Images/image00043.jpeg" alt="Salon de thé - Gâteaux et boissons">
+                <img src="Images/image18.jpeg" alt="Salon de thé - Gâteaux et boissons">
             </div>
             <div class="gallery-item">
-                <img src="Images/image00044.jpeg" alt="Salon de thé - Décoration">
+                <img src="Images/image19.jpeg" alt="Salon de thé - Décoration">
             </div>
         </div>
     </section>
@@ -141,30 +141,68 @@
     <section id="menu">
         <h2>Carte des Menus</h2>
         <div class="menu-section">
-            <!-- Menu Boissons Froides -->
-            <div class="menu-book" id="menu-boissons">
-                <div class="menu-pages">
-                    <div class="page cover">
-                        <img src="Images/image00001.png" alt="Couverture Boissons Froides">
-                        <!-- Zone cliquable en bas à droite -->
-                        <div class="corner" data-book="menu-boissons"></div>
+            <!-- Livre des Boissons Froides -->
+            <div class="book" id="book-boissons">
+                <div class="pages">
+                    <!-- Couverture du livre -->
+                    <div class="cover">
+                        <div class="front-cover">
+                            <img src="Images/couverture_boissons.png" alt="Couverture Boissons Froides">
+                        </div>
+                        <div class="back-cover">
+                            <img src="Images/dos_livre.png" alt="Dos du livre">
+                        </div>
                     </div>
-                    <div class="page content">
-                        <img src="Images/image00005.png" alt="Intérieur Boissons Froides">
+                    <!-- Pages intérieures -->
+                    <div class="page">
+                        <div class="page-front">
+                            <img src="Images/image1.jpeg" alt="Page 1 Boissons Froides">
+                        </div>
+                        <div class="page-back">
+                            <img src="Images/image2.jpeg" alt="Page 2 Boissons Froides">
+                        </div>
+                    </div>
+                </div>
+                <!-- Bouton pour ouvrir le livre -->
+                <div class="book-navigation">
+                    <button class="open-book">📖 Ouvrir le livre</button>
+                    <!-- Les boutons de navigation des pages seront visibles une fois le livre ouvert -->
+                    <div class="page-controls" style="display: none;">
+                        <button class="prev-page">⬅️</button>
+                        <button class="next-page">➡️</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Menu Desserts -->
-            <div class="menu-book" id="menu-desserts">
-                <div class="menu-pages">
-                    <div class="page cover">
-                        <img src="Images/image00004.png" alt="Couverture Desserts">
-                        <!-- Zone cliquable en bas à droite -->
-                        <div class="corner" data-book="menu-desserts"></div>
+            <!-- Livre des Desserts -->
+            <div class="book" id="book-desserts">
+                <div class="pages">
+                    <!-- Couverture du livre -->
+                    <div class="cover">
+                        <div class="front-cover">
+                            <img src="Images/couverture_desserts.png" alt="Couverture Desserts">
+                        </div>
+                        <div class="back-cover">
+                            <img src="Images/dos_livre.png" alt="Dos du livre">
+                        </div>
                     </div>
-                    <div class="page content">
-                        <img src="Images/image00002.png" alt="Intérieur Desserts">
+                    <!-- Pages intérieures -->
+                    <div class="page">
+                        <div class="page-front">
+                            <img src="Images/image6.jpeg" alt="Page 1 Desserts">
+                        </div>
+                        <div class="page-back">
+                            <img src="Images/image7.jpeg" alt="Page 2 Desserts">
+                        </div>
+                    </div>
+                </div>
+                <!-- Bouton pour ouvrir le livre -->
+                <div class="book-navigation">
+                    <button class="open-book">📖 Ouvrir le livre</button>
+                    <!-- Les boutons de navigation des pages seront visibles une fois le livre ouvert -->
+                    <div class="page-controls" style="display: none;">
+                        <button class="prev-page">⬅️</button>
+                        <button class="next-page">➡️</button>
                     </div>
                 </div>
             </div>
@@ -176,35 +214,35 @@
         <h2>Mes Créations</h2>
         <div class="creations-gallery">
             <div class="creation-item">
-                <img src="Images/image00047.jpeg" alt="Création 1" class="creation-image">
+                <img src="Images/image22.jpeg" alt="Fraise et Framboise" class="creation-image">
                 <div class="creation-text">
                     <h3>Fraise et Framboise</h3>
                     <p>Une création légère à base de fraises fraîches et de framboises, parfaite pour l'été.</p>
                 </div>
             </div>
             <div class="creation-item">
-                <img src="Images/image00045.jpeg" alt="Création 2" class="creation-image">
+                <img src="Images/image20.jpeg" alt="Pêche et Crème Vanillée" class="creation-image">
                 <div class="creation-text">
                     <h3>Pêche et Crème Vanillée</h3>
                     <p>Un dessert gourmand à base de pêches juteuses et de crème vanillée.</p>
                 </div>
             </div>
             <div class="creation-item">
-                <img src="Images/image00042.jpeg" alt="Création 3" class="creation-image">
+                <img src="Images/image14.jpeg" alt="Choux Paris-Brest" class="creation-image">
                 <div class="creation-text">
                     <h3>Choux Paris-Brest</h3>
                     <p>Un grand classique revisité avec une crème pralinée légère et des éclats de noisettes.</p>
                 </div>
             </div>
             <div class="creation-item">
-                <img src="Images/image00039.jpeg" alt="Création 4" class="creation-image">
+                <img src="Images/image17.jpeg" alt="Beignets Maison" class="creation-image">
                 <div class="creation-text">
                     <h3>Beignets Maison</h3>
                     <p>Des beignets moelleux faits maison, saupoudrés de sucre glace.</p>
                 </div>
             </div>
             <div class="creation-item">
-                <img src="Images/image00036.jpeg" alt="Création 5" class="creation-image">
+                <img src="Images/image11.jpeg" alt="Tartelette Passion et Mangue" class="creation-image">
                 <div class="creation-text">
                     <h3>Tartelette Passion et Mangue</h3>
                     <p>Une tartelette exotique associant la mangue et le fruit de la passion.</p>
@@ -278,14 +316,68 @@
                 reservationSection.style.display = 'none';
             });
 
-            // Interaction pour les menus
-            const corners = document.querySelectorAll('.corner');
+            // Gestion des livres
+            const books = document.querySelectorAll('.book');
 
-            corners.forEach(function (corner) {
-                corner.addEventListener('click', function (e) {
-                    const bookId = e.target.getAttribute('data-book');
-                    const book = document.getElementById(bookId);
-                    book.classList.toggle('open');
+            books.forEach(function (book) {
+                const cover = book.querySelector('.cover');
+                const openButton = book.querySelector('.open-book');
+                const pageControls = book.querySelector('.page-controls');
+                const pages = book.querySelectorAll('.page');
+                const prevBtn = book.querySelector('.prev-page');
+                const nextBtn = book.querySelector('.next-page');
+                let currentPage = 0;
+
+                // Fonction pour mettre à jour l'état des pages
+                function updatePages() {
+                    pages.forEach(function (page, index) {
+                        if (index < currentPage) {
+                            page.classList.add('turned');
+                        } else {
+                            page.classList.remove('turned');
+                        }
+                    });
+                }
+
+                // Ouvrir le livre
+                openButton.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    book.classList.add('open');
+                    pageControls.style.display = 'flex';
+                    openButton.style.display = 'none';
+                });
+
+                // Fermer le livre en cliquant en dehors
+                document.addEventListener('click', function (e) {
+                    if (!book.contains(e.target)) {
+                        book.classList.remove('open');
+                        pageControls.style.display = 'none';
+                        openButton.style.display = 'block';
+                        // Réinitialiser les pages
+                        currentPage = 0;
+                        updatePages();
+                    }
+                });
+
+                // Empêcher la propagation du clic à l'intérieur du livre
+                book.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                });
+
+                // Événement pour le bouton suivant
+                nextBtn.addEventListener('click', function () {
+                    if (currentPage < pages.length) {
+                        currentPage++;
+                        updatePages();
+                    }
+                });
+
+                // Événement pour le bouton précédent
+                prevBtn.addEventListener('click', function () {
+                    if (currentPage > 0) {
+                        currentPage--;
+                        updatePages();
+                    }
                 });
             });
         });
