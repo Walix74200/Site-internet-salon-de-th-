@@ -131,17 +131,14 @@ nav ul li a:hover {
     transition: background-color 0.3s ease, transform 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transform: scale(1);
+    position: relative;
+    overflow: hidden;
 }
 
 .btn:hover {
     background-color: #333;
     transform: scale(1.1) rotate(5deg);
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-}
-
-.btn {
-    position: relative;
-    overflow: hidden;
 }
 
 .btn::after {
@@ -219,6 +216,59 @@ section h2::after {
     background-color: var(--main-color);
     margin: 1rem auto;
     border-radius: 5px;
+}
+
+/* Section Notre Engagement */
+#about {
+    padding: 4rem 2rem;
+    text-align: left;
+    background-color: var(--bg-light);
+}
+
+#about .about-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#about .about-image {
+    flex: 1;
+    text-align: center;
+    margin-right: 2rem; /* Ajout de marge à droite */
+}
+
+#about .about-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#about .about-text {
+    flex: 1;
+}
+
+#about .about-text p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+/* Pour les petits écrans */
+@media screen and (max-width: 768px) {
+    #about .about-content {
+        flex-direction: column;
+    }
+
+    #about .about-image {
+        margin-right: 0;
+        margin-bottom: 2rem;
+    }
+
+    #about .about-text {
+        padding-right: 0;
+    }
 }
 
 /* Section Nos Services avec hover interactif */
@@ -549,7 +599,6 @@ footer a:hover {
     color: #555;
 }
 
-/* Effet d'apparition au survol */
 .creation-item:hover .creation-text {
     opacity: 1;
     transform: translateY(-10px);
