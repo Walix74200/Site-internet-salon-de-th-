@@ -74,12 +74,12 @@ nav ul li a:hover {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.6);
-    z-index: 1; /* L'overlay est derrière les éléments interactifs */
-    pointer-events: none; /* Permet aux événements de souris de passer à travers */
+    z-index: 1;
+    pointer-events: none;
 }
 
 .hero-text {
-    z-index: 2; /* Le texte est au-dessus de l'overlay */
+    z-index: 2;
     transform: scale(0.8);
     opacity: 0;
     animation: fadeIn 2s ease-out forwards;
@@ -139,6 +139,27 @@ nav ul li a:hover {
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
+.btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    transform: translateX(-50%) scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.btn:hover::after {
+    transform: translateX(-50%) scaleX(1);
+}
+
 /* Hero Section Gallery */
 .hero-gallery {
     display: flex;
@@ -146,7 +167,7 @@ nav ul li a:hover {
     gap: 15px;
     margin-top: 2rem;
     flex-wrap: wrap;
-    z-index: 2; /* Les images sont au-dessus de l'overlay */
+    z-index: 2;
 }
 
 .gallery-item {
@@ -166,14 +187,17 @@ nav ul li a:hover {
 }
 
 .gallery-item img:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Sections Générales */
+/* Sections Générales avec transition */
 section {
+    position: relative;
     padding: 4rem 2rem;
     text-align: center;
+    background-color: var(--bg-light);
+    transition: all 0.3s ease;
 }
 
 section h2 {
@@ -187,7 +211,17 @@ section p {
     line-height: 1.8;
 }
 
-/* Section Services */
+section h2::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 3px;
+    background-color: var(--main-color);
+    margin: 1rem auto;
+    border-radius: 5px;
+}
+
+/* Section Nos Services avec hover interactif */
 #services ul {
     list-style-type: none;
     padding: 0;
@@ -196,6 +230,15 @@ section p {
 #services ul li {
     font-size: 1.2rem;
     margin: 1rem 0;
+    padding: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+}
+
+#services ul li:hover {
+    background-color: var(--pastel-green);
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Section Formules */
@@ -273,9 +316,10 @@ section p {
 
 /* Section Réservation */
 #reservation {
-    background-color: var(--pastel-green);
     padding: 4rem 2rem;
     text-align: center;
+    background-color: var(--pastel-green);
+    min-height: 100vh; /* Pour occuper toute la hauteur de la fenêtre */
 }
 
 #reservation h2 {
@@ -328,7 +372,6 @@ section p {
     box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
 }
 
-/* Style du bouton */
 #reservation form button {
     background-color: var(--main-color);
     color: white;
@@ -347,6 +390,22 @@ section p {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
+#back-to-home {
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    background-color: var(--main-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#back-to-home:hover {
+    background-color: #333;
+    transform: scale(1.05);
+}
+
 /* Footer */
 footer {
     background-color: var(--main-color);
@@ -362,4 +421,152 @@ footer a {
 
 footer a:hover {
     text-decoration: underline;
+}
+
+/* Section Carte des Menus */
+#menu {
+    padding: 4rem 2rem;
+    text-align: center;
+    background-color: var(--bg-light);
+}
+
+#menu h2 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+}
+
+.menu-section {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.menu-category {
+    width: 45%;
+    min-width: 300px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-category h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--main-color);
+}
+
+.menu-category img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-category img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (max-width: 768px) {
+    .menu-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .menu-category {
+        width: 90%;
+    }
+}
+
+/* Section Mes Créations */
+#creations {
+    padding: 4rem 2rem;
+    text-align: center;
+    background-color: var(--bg-light);
+}
+
+#creations h2 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+}
+
+.creations-gallery {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.creation-item {
+    width: 30%;
+    min-width: 200px;
+    max-width: 300px;
+    overflow: hidden;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.creation-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.creation-image {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.creation-item:hover .creation-image {
+    transform: scale(1.1);
+}
+
+/* Texte sous les images */
+.creation-text {
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.creation-text h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--main-color);
+}
+
+.creation-text p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.creation-item:hover .creation-text {
+    opacity: 1;
+    transform: translateY(-10px);
+}
+
+/* Pour les petits écrans */
+@media screen and (max-width: 768px) {
+    .creations-gallery {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .creation-item {
+        width: 90%;
+    }
+}
+
+/* Effet de défilement doux */
+html {
+    scroll-behavior: smooth;
 }
