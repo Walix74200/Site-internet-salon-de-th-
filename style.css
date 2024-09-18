@@ -369,6 +369,7 @@ section h2::after {
     padding: 4rem 2rem;
     text-align: center;
     background-color: var(--bg-light);
+    position: relative; /* Position relative pour le conteneur parent */
 }
 
 #menu h2 {
@@ -377,23 +378,33 @@ section h2::after {
     color: var(--text-color);
 }
 
+/* Retirer le flexbox pour permettre des positions absolues */
 .menu-section {
-    display: flex;
-    justify-content: space-between; /* Écarte les livres symétriquement */
-    align-items: flex-start;
-    flex-wrap: wrap;
-    gap: 2rem;
+    position: relative; /* Nécessaire pour les éléments positionnés absolument */
+    height: 600px; /* Ajuste la hauteur pour faire de la place aux livres */
 }
 
-/* Styles pour le livre */
+/* Position absolue pour les livres */
+#book-boissons {
+    position: absolute;
+    top: 50px; /* Ajuste cette valeur pour déplacer verticalement */
+    left: 300px; /* Ajuste cette valeur pour déplacer horizontalement */
+    transition: transform 0.3s ease;
+}
+
+#book-desserts {
+    position: absolute;
+    top: 50px; /* Ajuste cette valeur pour déplacer verticalement */
+    right: 200px; /* Ajuste cette valeur pour déplacer horizontalement */
+    transition: transform 0.3s ease;
+}
+
+/* Styles pour les livres */
 .book {
-    position: relative;
     width: 300px;
     height: 400px;
     perspective: 2000px;
-    overflow: visible;
     cursor: pointer;
-    margin: 0;
 }
 
 .cover {
