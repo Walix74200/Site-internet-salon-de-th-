@@ -1,5 +1,5 @@
 /* Importation des polices Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Great+Vibes&display=swap');
 
 /* Variables CSS pour les couleurs */
 :root {
@@ -20,36 +20,132 @@ body {
     overflow-x: hidden;
 }
 
+/* Barre de navigation */
 header {
-    background-color: var(--main-color);
-    padding: 1.5rem;
-    color: white;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: white; /* Fond blanc */
+    padding: 1rem 1rem; /* Augmentation du padding pour agrandir la barre */
+    color: black; /* Texte en noir */
     position: sticky;
     top: 0;
     z-index: 1000;
+    border-bottom: 1px solid #ccc; /* Bordure pour délimiter */
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
+nav {
     display: flex;
-    justify-content: center;
-    gap: 20px;
+    align-items: center;
 }
 
-nav ul li a {
-    color: white;
+.nav-left {
+    display: flex;
+}
+
+.nav-left ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-left ul li {
+    margin-right: 20px;
+    position: relative;
+}
+
+.nav-left ul li a {
+    color: black; /* Texte en noir */
     text-decoration: none;
     font-size: 1.2rem;
     font-weight: bold;
-    padding-bottom: 0.5rem;
-    transition: color 0.3s ease, border-bottom 0.3s ease;
+    padding: 0.5rem;
 }
 
-nav ul li a:hover {
-    border-bottom: 2px solid white;
+.nav-left ul li a:hover {
+    border-bottom: 2px solid var(--main-color); /* Ligne de surbrillance verte */
+}
+
+.nav-center {
+    flex: 1;
+    text-align: left;
+    margin-left: 50px; /* Ajustez cette valeur pour déplacer le nom de l'entreprise */
+}
+
+.nav-center .logo {
+    color: var(--main-color);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.nav-center .company-name-line1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.nav-center .company-name-line2 {
+    font-family: 'Great Vibes', cursive; /* Utilisation de la nouvelle police */
+    font-size: 3rem;
+    line-height: 1;
+    margin-top: -10px; /* Ajustement pour rapprocher les deux lignes */
+}
+
+.nav-center .logo:hover {
+    text-decoration: none;
+}
+
+.nav-left ul li .reservation-btn {
+    color: white; /* Texte en blanc pour le bouton de réservation */
+    background-color: var(--main-color); /* Fond vert pour le bouton de réservation */
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-left ul li .reservation-btn:hover {
+    background-color: #333;
+}
+
+/* Menu déroulant */
+.dropdown {
+    position: relative;
+}
+
+.dropdown .dropbtn {
+    color: black; /* Texte en noir */
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 0.5rem;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white; /* Fond blanc pour le menu déroulant */
+    min-width: 200px;
+    z-index: 1;
+    flex-direction: column;
+    padding: 0.5rem 0;
+    border: 1px solid #ccc; /* Bordure pour délimiter le menu */
+}
+
+.dropdown-content a {
+    color: black; /* Texte en noir */
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: var(--bg-light);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
 }
 
 /* Section Hero avec overlay */
@@ -58,6 +154,7 @@ nav ul li a:hover {
     background-position: center;
     height: 80vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -369,7 +466,7 @@ section h2::after {
     padding: 4rem 2rem;
     text-align: center;
     background-color: var(--bg-light);
-    position: relative; /* Position relative pour le conteneur parent */
+    position: relative;
 }
 
 #menu h2 {
@@ -378,24 +475,23 @@ section h2::after {
     color: var(--text-color);
 }
 
-/* Retirer le flexbox pour permettre des positions absolues */
+/* Positionnement des livres */
 .menu-section {
-    position: relative; /* Nécessaire pour les éléments positionnés absolument */
-    height: 600px; /* Ajuste la hauteur pour faire de la place aux livres */
+    position: relative;
+    height: 600px;
 }
 
-/* Position absolue pour les livres */
 #book-boissons {
     position: absolute;
-    top: 50px; /* Ajuste cette valeur pour déplacer verticalement */
-    left: 300px; /* Ajuste cette valeur pour déplacer horizontalement */
+    top: 50px;
+    left: 300px;
     transition: transform 0.3s ease;
 }
 
 #book-desserts {
     position: absolute;
-    top: 50px; /* Ajuste cette valeur pour déplacer verticalement */
-    right: 200px; /* Ajuste cette valeur pour déplacer horizontalement */
+    top: 50px;
+    right: 200px;
     transition: transform 0.3s ease;
 }
 
@@ -417,7 +513,8 @@ section h2::after {
     z-index: 2;
 }
 
-.front-cover, .back-cover {
+.front-cover,
+.back-cover {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -426,7 +523,8 @@ section h2::after {
     border-radius: 5px;
 }
 
-.front-cover img, .back-cover img {
+.front-cover img,
+.back-cover img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -436,22 +534,7 @@ section h2::after {
     transform: rotateY(180deg);
 }
 
-/* Pages intérieures, cachées quand le livre est fermé */
-.pages .page {
-    display: none;
-}
-
-/* Styles pour l'ouverture du livre */
-.book.open .cover {
-    transform: rotateY(-180deg);
-}
-
-/* Afficher les pages quand le livre est ouvert */
-.book.open .pages .page {
-    display: block;
-}
-
-/* Styles pour les pages intérieures */
+/* Pages intérieures */
 .pages {
     width: 100%;
     height: 100%;
@@ -475,7 +558,8 @@ section h2::after {
 }
 
 /* Faces avant et arrière des pages */
-.page-front, .page-back {
+.page-front,
+.page-back {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -487,7 +571,8 @@ section h2::after {
     transform: rotateY(180deg);
 }
 
-.page-front img, .page-back img {
+.page-front img,
+.page-back img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -521,21 +606,22 @@ section h2::after {
     background-color: #333;
 }
 
-/* Ajustements pour les petits écrans */
+/* Ajustements responsives */
 @media screen and (max-width: 768px) {
     .menu-section {
-        flex-direction: column;
-        align-items: center;
+        height: auto;
+        padding: 2rem 0;
+    }
+
+    #book-boissons,
+    #book-desserts {
+        position: static;
+        margin: 20px 0;
     }
 
     .book {
         width: 100%;
         height: auto;
-        margin: 20px 0;
-    }
-
-    .page {
-        width: 100%;
     }
 }
 
@@ -543,7 +629,7 @@ section h2::after {
 #creations {
     padding: 4rem 2rem;
     text-align: center;
-    background-color: var(--bg-light); /* Assurer un fond blanc */
+    background-color: var(--bg-light);
 }
 
 #creations h2 {
@@ -559,19 +645,18 @@ section h2::after {
     gap: 2rem;
 }
 
-/* Assurer un fond blanc et supprimer toute zone grise */
 .creation-item {
-    width: 22%; /* Ajusté pour afficher 4 créations par ligne */
+    width: 22%;
     min-width: 200px;
     max-width: 300px;
     overflow: hidden;
     border-radius: 10px;
     position: relative;
-    background-color: white; /* Assurer un fond blanc sous chaque création */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin: 0; /* Supprimer toute marge indésirable */
-    padding: 0; /* Supprimer tout padding indésirable */
+    margin: 0;
+    padding: 0;
 }
 
 .creation-item:hover {
@@ -579,25 +664,22 @@ section h2::after {
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Fixer la taille des images */
 .creation-image {
     width: 100%;
     height: 200px;
-    object-fit: cover; /* Maintenir le ratio d'aspect sans distorsion */
+    object-fit: cover;
     transition: transform 0.3s ease;
 }
 
-/* Supprimer toute couleur ou effet sous les images */
 .creation-text {
     padding: 1rem;
-    background-color: white; /* Assurer un fond blanc */
+    background-color: white;
     text-align: center;
     transition: opacity 0.3s ease, transform 0.3s ease;
-    margin: 0; /* Supprimer toute marge indésirable */
-    box-shadow: none; /* Supprimer toute ombre résiduelle sous le texte */
+    margin: 0;
+    box-shadow: none;
 }
 
-/* Texte sous les images */
 .creation-text h3 {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
@@ -614,10 +696,9 @@ section h2::after {
     transform: translateY(-10px);
 }
 
-/* Responsive pour mobile : 1 à 2 créations par ligne selon la taille */
 @media screen and (max-width: 1024px) {
     .creation-item {
-        width: 45%; /* 2 créations par ligne pour les tablettes */
+        width: 45%;
     }
 }
 
@@ -628,7 +709,7 @@ section h2::after {
     }
 
     .creation-item {
-        width: 90%; /* 1 création par ligne pour les petits écrans */
+        width: 90%;
     }
 }
 
