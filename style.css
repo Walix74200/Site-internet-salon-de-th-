@@ -23,12 +23,12 @@ body {
 /* Barre de navigation */
 header {
     background-color: white; /* Fond blanc */
-    padding: 1rem 1rem; /* Augmentation du padding pour agrandir la barre */
-    color: black; /* Texte en noir */
+    padding: 1rem 1rem;
+    color: black;
     position: sticky;
     top: 0;
-    z-index: 1000;
-    border-bottom: 1px solid #ccc; /* Bordure pour délimiter */
+    z-index: 1000; /* Assure que la barre de navigation est toujours au-dessus */
+    border-bottom: 1px solid #ccc;
 }
 
 nav {
@@ -107,52 +107,85 @@ nav {
     background-color: #333;
 }
 
-/* Menu déroulant */
-.dropdown {
-    position: relative;
+/* Menu latéral (sidebar) */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -300px; /* Le menu est caché en dehors de l'écran à gauche */
+    width: 300px;
+    height: 100%;
+    background-color: white;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    transition: left 0.3s ease;
+    z-index: 2000;
+    overflow-y: auto;
 }
 
-.dropdown .dropbtn {
-    color: black; /* Texte en noir */
+.sidebar.active {
+    left: 0; /* Le menu est visible lorsqu'il a la classe 'active' */
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem;
+    border-bottom: 1px solid #ccc;
+}
+
+.close-btn {
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-menu li {
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.sidebar-menu li a {
+    display: block;
+    padding: 1rem;
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.sidebar-menu li a:hover {
+    background-color: var(--bg-light);
+}
+
+/* Ajustements pour le menu-toggle */
+.menu-toggle {
+    color: black;
     text-decoration: none;
     font-size: 1.2rem;
     font-weight: bold;
     padding: 0.5rem;
+    cursor: pointer;
 }
 
-.dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: white; /* Fond blanc pour le menu déroulant */
-    min-width: 200px;
-    z-index: 1;
-    flex-direction: column;
-    padding: 0.5rem 0;
-    border: 1px solid #ccc; /* Bordure pour délimiter le menu */
+.menu-toggle:hover {
+    border-bottom: 2px solid var(--main-color);
 }
 
-.dropdown-content a {
-    color: black; /* Texte en noir */
-    padding: 0.5rem 1rem;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdown-content a:hover {
-    background-color: var(--bg-light);
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
+/* Empêcher le défilement du corps lorsque le menu latéral est ouvert */
+body.sidebar-open {
+    overflow: hidden;
 }
 
 /* Section Hero avec overlay */
 .hero {
+    background-image: url('Images/your-background-image.jpg'); /* Remplacez par votre image */
     background-size: cover;
     background-position: center;
-    height: 80vh;
+    height: 80vh; /* Ajustez cette hauteur si nécessaire */
+    max-height: 80vh; /* Limite maximale pour l'image */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -161,6 +194,7 @@ nav {
     color: white;
     position: relative;
     background-attachment: fixed;
+    overflow: hidden; /* Empêche le débordement de l'image */
 }
 
 .hero::before {
@@ -170,7 +204,7 @@ nav {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.01);
     z-index: 1;
     pointer-events: none;
 }
@@ -252,37 +286,6 @@ nav {
 
 .btn:hover::after {
     transform: translateX(-50%) scaleX(1);
-}
-
-/* Hero Section Gallery */
-.hero-gallery {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 2rem;
-    flex-wrap: wrap;
-    z-index: 2;
-}
-
-.gallery-item {
-    flex: 1;
-    min-width: 200px;
-    max-width: 300px;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.gallery-item img {
-    width: 100%;
-    height: auto;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-radius: 10px;
-}
-
-.gallery-item img:hover {
-    transform: scale(1.1);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Sections Générales avec transition */
@@ -478,43 +481,39 @@ section h2::after {
 /* Positionnement des livres */
 .menu-section {
     position: relative;
-    height: 600px;
+    /* Ajustez la hauteur si nécessaire */
 }
 
-#book-boissons {
-    position: absolute;
-    top: 50px;
-    left: 300px;
-    transition: transform 0.3s ease;
-}
-
-#book-desserts {
-    position: absolute;
-    top: 50px;
-    right: 200px;
-    transition: transform 0.3s ease;
-}
-
-/* Styles pour les livres */
 .book {
     width: 300px;
     height: 400px;
     perspective: 2000px;
     cursor: pointer;
+    margin: 0 auto;
+    position: relative;
 }
 
-.cover {
+.book .cover, .book .pages {
     width: 100%;
     height: 100%;
     position: absolute;
+    top: 0;
+    left: 0;
     transform-style: preserve-3d;
-    transition: transform 1s ease;
-    transform-origin: left;
-    z-index: 2;
 }
 
-.front-cover,
-.back-cover {
+.book .cover {
+    z-index: 2;
+    transition: transform 1s ease;
+    transform-origin: left;
+}
+
+.book.open .cover {
+    transform: rotateY(-160deg);
+}
+
+.book .front-cover,
+.book .back-cover {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -523,43 +522,32 @@ section h2::after {
     border-radius: 5px;
 }
 
-.front-cover img,
-.back-cover img {
+.book .front-cover img,
+.book .back-cover img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.back-cover {
+.book .back-cover {
     transform: rotateY(180deg);
 }
 
-/* Pages intérieures */
-.pages {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform-style: preserve-3d;
-}
-
-.page {
+.book .pages .page {
     width: 100%;
     height: 100%;
     position: absolute;
-    top: 0;
-    left: 0;
     transform-origin: left;
     transform-style: preserve-3d;
     transition: transform 1s ease;
 }
 
-.page.turned {
+.book .pages .page.turned {
     transform: rotateY(-180deg);
 }
 
-/* Faces avant et arrière des pages */
-.page-front,
-.page-back {
+.book .page-front,
+.book .page-back {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -567,28 +555,22 @@ section h2::after {
     overflow: hidden;
 }
 
-.page-back {
+.book .page-back {
     transform: rotateY(180deg);
 }
 
-.page-front img,
-.page-back img {
+.book .page-front img,
+.book .page-back img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
 /* Boutons de navigation des pages */
-.book-navigation {
-    margin-top: 20px;
-    text-align: center;
-}
-
 .page-controls {
-    margin-top: 20px;
-    display: flex;
+    display: none;
     justify-content: center;
-    gap: 1rem;
+    margin-top: 20px;
 }
 
 .page-controls button {
@@ -596,33 +578,32 @@ section h2::after {
     color: white;
     border: none;
     padding: 0.5rem 1rem;
-    font-size: 1.5rem;
+    font-size: 1rem;
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s ease;
+    margin: 0 5px;
 }
 
 .page-controls button:hover {
     background-color: #333;
 }
 
-/* Ajustements responsives */
-@media screen and (max-width: 768px) {
-    .menu-section {
-        height: auto;
-        padding: 2rem 0;
-    }
+/* Bouton pour ouvrir le livre */
+.open-book {
+    background-color: var(--main-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
 
-    #book-boissons,
-    #book-desserts {
-        position: static;
-        margin: 20px 0;
-    }
-
-    .book {
-        width: 100%;
-        height: auto;
-    }
+.open-book:hover {
+    background-color: #333;
 }
 
 /* Section Mes Créations */
@@ -748,7 +729,8 @@ section h2::after {
 }
 
 #reservation form input,
-#reservation form select {
+#reservation form select,
+#reservation form textarea {
     width: calc(100% - 20px);
     padding: 1rem;
     margin-bottom: 1.5rem;
@@ -760,12 +742,14 @@ section h2::after {
 }
 
 #reservation form input:hover,
-#reservation form select:hover {
+#reservation form select:hover,
+#reservation form textarea:hover {
     border-color: var(--main-color);
 }
 
 #reservation form input:focus,
-#reservation form select:focus {
+#reservation form select:focus,
+#reservation form textarea:focus {
     border-color: var(--main-color);
     outline: none;
     box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
@@ -789,6 +773,7 @@ section h2::after {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
+/* Bouton Retour à l'accueil */
 #back-to-home {
     margin-top: 2rem;
     padding: 1rem 2rem;
@@ -805,7 +790,7 @@ section h2::after {
     transform: scale(1.05);
 }
 
-/* Footer */
+/* Pied de page */
 footer {
     background-color: var(--main-color);
     color: white;
@@ -826,3 +811,76 @@ footer a:hover {
 html {
     scroll-behavior: smooth;
 }
+
+/* Styles pour la section des annonces défilantes */
+.annonce-container {
+    position: relative;
+    width: 100%;
+    height: 60vh; /* Ajustez selon la hauteur que vous voulez */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: var(--bg-light);
+    color: var(--text-color);
+}
+
+.annonce-slide {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: space-between; /* Place les éléments de chaque côté */
+    align-items: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    padding: 0 2rem;
+}
+
+.annonce-slide.active {
+    opacity: 1;
+}
+
+.annonce-description {
+    width: 40%; /* La description occupe moins de place */
+    text-align: left;
+}
+
+.annonce-description h2 {
+    font-size: 2.5rem;
+    color: var(--main-color);
+}
+
+.annonce-description p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+.annonce-image {
+    width: 55%; /* L'image occupe plus de place */
+    height: auto;
+    object-fit: cover; /* S'assure que l'image garde ses proportions */
+    border-radius: 10px;
+    max-width: 500px; /* Taille maximale des images */
+    max-height: 300px; /* Hauteur maximale identique pour toutes les images */
+}
+
+/* Effet de vague pour la section Notre Engagement */
+#about {
+    background-color: var(--pastel-green);
+    padding: 4rem 2rem;
+    text-align: left;
+}
+
+.hero {
+    background-color: var(--bg-light);
+}
+
+/* Style pour la ligne de séparation */
+.section-separator {
+    width: 80%; /* Largeur de la ligne */
+    margin: 50px auto; /* Marges pour espacer la ligne des sections */
+    border-bottom: 2px solid var(--main-color); /* Couleur et épaisseur de la ligne */
+    opacity: 0.5; /* Légère transparence */
+}
+
+

@@ -13,19 +13,18 @@
 </head>
 <body>
 
+
+
+
+
+
     <!-- Navigation -->
     <header>
         <nav>
             <div class="nav-left">
                 <ul>
-                    <li class="dropdown">
-                        <a href="#" class="dropbtn">M&C</a>
-                        <div class="dropdown-content">
-                            <a href="#services">Nos Services</a>
-                            <a href="#formules">Formules</a>
-                            <a href="#menu">Carte des Menus</a>
-                            <a href="#creations">Mes Créations</a>
-                        </div>
+                    <li>
+                        <a href="#" class="menu-toggle">M&C</a>
                     </li>
                     <li><a href="#accueil">Accueil</a></li>
                     <li><a href="#about">Notre Engagement</a></li>
@@ -41,54 +40,49 @@
         </nav>
     </header>
 
+    <!-- Menu latéral -->
+    <div id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <span class="close-btn">&times;</span>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="#services">Nos Services</a></li>
+            <li><a href="#formules">Formules</a></li>
+            <li><a href="#menu">Carte des Menus</a></li>
+            <li><a href="#creations">Mes Créations</a></li>
+        </ul>
+    </div> 
+
     <!-- Section Accueil -->
     <section class="hero" id="accueil">
-        <div class="hero-text">
-            <h1>Salon de Thé M&C</h1>
-            <p>Un lieu de rencontre chaleureux, familial, et écoresponsable.</p>
-            <a href="#about" class="btn">Découvrez Notre Univers</a>
-        </div>
-        <div class="hero-gallery">
-            <!-- Première colonne avec diaporama -->
-            <div class="gallery-item">
-                <div class="slideshow-container">
-                    <div class="mySlides1">
-                        <img src="Images/image12.jpeg" alt="Salon de thé - Vue intérieure">
-                    </div>
-                    <div class="mySlides1">
-                        <img src="Images/image13.jpeg" alt="Salon de thé - Vue intérieure 2">
-                    </div>
-                    <!-- Ajoutez d'autres images si nécessaire -->
+        <div class="annonce-container">
+            <div class="annonce-slide">
+                <div class="annonce-description">
+                    <h2>Fraise et Framboise</h2>
+                    <p>Une création légère à base de fraises fraîches et de framboises, parfaite pour l'été.</p>
                 </div>
+                <img src="Images/image22.jpeg" alt="Fraise et Framboise" class="annonce-image">
             </div>
-
-            <!-- Deuxième colonne avec diaporama -->
-            <div class="gallery-item">
-                <div class="slideshow-container">
-                    <div class="mySlides2">
-                        <img src="Images/image18.jpeg" alt="Salon de thé - Gâteaux et boissons">
-                    </div>
-                    <div class="mySlides2">
-                        <img src="Images/image21.jpeg" alt="Salon de thé - Gâteaux et boissons 2">
-                    </div>
-                    <!-- Ajoutez d'autres images si nécessaire -->
+            <div class="annonce-slide">
+                <div class="annonce-description">
+                    <h2>Pêche et Crème Vanillée</h2>
+                    <p>Un dessert gourmand à base de pêches juteuses et de crème vanillée.</p>
                 </div>
+                <img src="Images/image20.jpeg" alt="Pêche et Crème Vanillée" class="annonce-image">
             </div>
-
-            <!-- Troisième colonne avec diaporama -->
-            <div class="gallery-item">
-                <div class="slideshow-container">
-                    <div class="mySlides3">
-                        <img src="Images/image19.jpeg" alt="Salon de thé - Décoration">
-                    </div>
-                    <div class="mySlides3">
-                        <img src="Images/image22.jpeg" alt="Salon de thé - Décoration 2">
-                    </div>
-                    <!-- Ajoutez d'autres images si nécessaire -->
+            <div class="annonce-slide">
+                <div class="annonce-description">
+                    <h2>Choux Paris-Brest</h2>
+                    <p>Un grand classique revisité avec une crème pralinée légère et des éclats de noisettes.</p>
                 </div>
+                <img src="Images/image14.jpeg" alt="Choux Paris-Brest" class="annonce-image">
             </div>
         </div>
-    </section>
+    </section>       
+    
+    <!-- Ligne de séparation -->
+    <div class="section-separator">
+    </div>
 
     <!-- Section Notre Engagement -->
     <section id="about">

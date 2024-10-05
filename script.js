@@ -1,5 +1,39 @@
+// script.js
+
 document.addEventListener('DOMContentLoaded', function () {
-    // Code pour la réservation
+    // **Code pour le menu latéral (sidebar)**
+    const sidebar = document.getElementById('sidebar');
+    const menuToggle = document.querySelector('.menu-toggle');
+    const closeBtn = document.querySelector('.close-btn');
+
+    // Ouvrir le menu latéral
+    menuToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        sidebar.classList.add('active');
+        // Ajouter la classe pour empêcher le défilement du corps (optionnel)
+        document.body.classList.add('sidebar-open');
+    });
+
+    // Fermer le menu latéral en cliquant sur la croix
+    closeBtn.addEventListener('click', function() {
+        sidebar.classList.remove('active');
+        document.body.classList.remove('sidebar-open');
+    });
+
+    // Fermer le menu latéral en cliquant en dehors
+    document.addEventListener('click', function(event) {
+        if (!sidebar.contains(event.target) && !menuToggle.contains(event.target)) {
+            sidebar.classList.remove('active');
+            document.body.classList.remove('sidebar-open');
+        }
+    });
+
+    // Empêcher la propagation du clic à l'intérieur du menu latéral
+    sidebar.addEventListener('click', function(event) {
+        event.stopPropagation();
+    });
+
+    // **Code pour la réservation**
     const reservationLink = document.querySelector('.reservation-btn');
     const reservationSection = document.getElementById('reservation');
     const backToHomeBtn = document.getElementById('back-to-home');
@@ -25,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
         reservationSection.style.display = 'none';
     });
 
-    // Gestion des livres
+    // **Gestion des livres interactifs**
     const books = document.querySelectorAll('.book');
 
     books.forEach(function (book) {
@@ -92,20 +126,22 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-
-    // Code pour le diaporama
+    // Script pour faire défiler les annonces
     let slideIndex = 0;
-    showSlides();
+    const slides = document.querySelectorAll('.annonce-slide');
+    const totalSlides = slides.length;
 
     function showSlides() {
-        let i;
-        const slides = document.getElementsByClassName("mySlides");
-        for (i = 0; i < slides.length; i++) {
-           slides[i].style.display = "none";  
-        }
-        slideIndex++;
-        if (slideIndex > slides.length) { slideIndex = 1 }    
-        slides[slideIndex-1].style.display = "block";  
-        setTimeout(showSlides, 5000); // Change l'image toutes les 5 secondes
+        slides.forEach((slide, index) => {
+            slide.classList.remove('active');
+            if (index === slideIndex) {
+                slide.classList.add('active');
+            }
+        });
+        slideIndex = (slideIndex + 1) % totalSlides;
     }
+
+    // Initialisation et affichage des slides toutes les 4 secondes
+    showSlides();
+    setInterval(showSlides, 4000);
 });
