@@ -167,4 +167,46 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initialisation et affichage des slides toutes les 4 secondes
     showSlides();
     setInterval(showSlides, 4000);
+
+});
+
+// Script pour afficher la map Google avec la localisation du salon
+document.addEventListener('DOMContentLoaded', function () {
+    const mapBtn = document.getElementById('map-btn');
+    const mapSection = document.getElementById('map-section');
+    const backToHomeMapBtn = document.getElementById('back-to-home-map');
+    const sections = document.querySelectorAll('section:not(#map-section)');
+    const nav = document.querySelector('header');
+
+    // Clic sur l'icône "Localisation"
+    mapBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        // Masquer toutes les autres sections et le menu de navigation
+        sections.forEach(section => section.style.display = 'none');
+        nav.style.display = 'none';
+        // Afficher la section Google Maps
+        mapSection.style.display = 'block';
+    });
+
+    // Clic sur le bouton "Retour à l'accueil"
+    backToHomeMapBtn.addEventListener('click', function () {
+        // Réafficher toutes les sections et le menu de navigation
+        sections.forEach(section => section.style.display = 'block');
+        nav.style.display = 'block';
+        // Masquer la section Google Maps
+        mapSection.style.display = 'none';
+    });
+});
+
+// Section pour la carte des Menus V2
+document.addEventListener('DOMContentLoaded', function () {
+    const cards = document.querySelectorAll('.card');
+
+    cards.forEach(card => {
+        const flipIcon = card.querySelector('.flip-icon');
+
+        flipIcon.addEventListener('click', function () {
+            card.classList.toggle('flipped');
+        });
+    });
 });

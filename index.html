@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
-<>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Salon de Thé M&C</title>
@@ -10,6 +10,7 @@
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
      <!-- Ajout de la police pour le nom de l'entreprise -->
      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
 
@@ -29,6 +30,11 @@
                     <li><a href="#reservation" class="reservation-btn">Réservation</a></li>
                 </ul>
             </div>
+            <div class="nav-right">
+                <ul>
+                    <li><a href="#" id="map-btn" class="map-btn"><i class="fas fa-map-marker-alt"></i></a></li>
+                </ul>
+            </div>
             <div class="nav-center">
                 <a href="#accueil" class="logo">
                     <span class="company-name-line1">Salon de thé</span>
@@ -46,7 +52,7 @@
         <ul class="sidebar-menu">
             <li><a href="#services">Nos Services</a></li>
             <li><a href="#formules">Formules</a></li>
-            <li><a href="#menu">Carte des Menus</a></li>
+            <li><a href="#menu-section">Carte des Menus</a></li>
             <li><a href="#creations">Mes Créations</a></li>
         </ul>
     </div> 
@@ -183,76 +189,61 @@
     </section>
 
     <!-- Section Carte des Menus -->
-    <section id="menu">
-        <h2>Carte des Menus</h2>
-        <div class="menu-section">
-            <!-- Livre des Boissons Froides -->
-            <div class="book" id="book-boissons">
-                <div class="pages">
-                    <!-- Couverture du livre -->
-                    <div class="cover">
-                        <div class="front-cover">
-                            <img src="Images/couverture_boissons.png" alt="Couverture Boissons Froides">
+    <section id="menu-section">
+        <h2 class="section-title">Carte des Menus</h2>
+        <div class="menu-container">
+            <!-- Première carte -->
+            <div class="menu-item">
+                <h3 class="menu-item-title">Boissons Froides</h3>
+                <div class="card">
+                    <div class="card-inner">
+                        <!-- Face avant : Image de couverture -->
+                        <div class="card-front">
+                            <img src="Images/couverture_boissons.png" alt="Menu 1">
+                            <div class="flip-icon">↻</div> <!-- Icône pour le retournement -->
                         </div>
-                        <div class="back-cover">
-                            <img src="Images/dos_livre.png" alt="Dos du livre">
+                        <!-- Face arrière : Contenu du menu -->
+                        <div class="card-back">
+                            <img src="Images/carte_boissons1.png" alt="Menu 1">
                         </div>
-                    </div>
-                    <!-- Pages intérieures -->
-                    <div class="page">
-                        <div class="page-front">
-                            <img src="Images/image1.jpeg" alt="Page 1 Boissons Froides">
-                        </div>
-                        <div class="page-back">
-                            <img src="Images/image2.jpeg" alt="Page 2 Boissons Froides">
-                        </div>
-                    </div>
-                </div>
-                <!-- Bouton pour ouvrir le livre -->
-                <div class="book-navigation">
-                    <button class="open-book">📖 Ouvrir le livre</button>
-                    <!-- Les boutons de navigation des pages seront visibles une fois le livre ouvert -->
-                    <div class="page-controls" style="display: none;">
-                        <button class="prev-page">⬅️</button>
-                        <button class="next-page">➡️</button>
                     </div>
                 </div>
             </div>
-
-            <!-- Livre des Desserts -->
-            <div class="book" id="book-desserts">
-                <div class="pages">
-                    <!-- Couverture du livre -->
-                    <div class="cover">
-                        <div class="front-cover">
-                            <img src="Images/couverture_desserts.png" alt="Couverture Desserts">
+    
+            <!-- Deuxième carte -->
+            <div class="menu-item">
+                <h3 class="menu-item-title">Boissons Chaudes</h3>
+                <div class="card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <img src="Images/couverture_boissons.png" alt="Menu 2">
+                            <div class="flip-icon">↻</div>
                         </div>
-                        <div class="back-cover">
-                            <img src="Images/dos_livre.png" alt="Dos du livre">
-                        </div>
-                    </div>
-                    <!-- Pages intérieures -->
-                    <div class="page">
-                        <div class="page-front">
-                            <img src="Images/image6.jpeg" alt="Page 1 Desserts">
-                        </div>
-                        <div class="page-back">
-                            <img src="Images/image7.jpeg" alt="Page 2 Desserts">
+                        <div class="card-back">
+                            <img src="Images/carte_boissons2.png" alt="Menu 2">
                         </div>
                     </div>
                 </div>
-                <!-- Bouton pour ouvrir le livre -->
-                <div class="book-navigation">
-                    <button class="open-book">📖 Ouvrir le livre</button>
-                    <!-- Les boutons de navigation des pages seront visibles une fois le livre ouvert -->
-                    <div class="page-controls" style="display: none;">
-                        <button class="prev-page">⬅️</button>
-                        <button class="next-page">➡️</button>
+            </div>
+    
+            <!-- Troisième carte -->
+            <div class="menu-item">
+                <h3 class="menu-item-title">Desserts</h3>
+                <div class="card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <img src="Images/couverture_desserts.png" alt="Menu 3">
+                            <div class="flip-icon">↻</div>
+                        </div>
+                        <div class="card-back">
+                            <img src="Images/carte_dessert.png" alt="Menu 3">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    
 
     <!-- Section Mes Créations -->
     <section id="creations">
@@ -360,6 +351,19 @@
         <button id="back-to-home">Retour à l'accueil</button>
     </section>
 
+    <!-- Section Google Maps cachée -->
+    <section id="map-section" style="display: none;">
+        <h2>Notre Localisation</h2>
+        <div class="map-container">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5254.460417277903!2d2.3602421759590437!3d48.81566890371272!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e6718002cb5611%3A0x581b7c8cd0a77c3e!2sEcole%20d&#39;ing%C3%A9nieurs%20informatique%20Paris%20-%20EPITA!5e0!3m2!1sfr!2sfr!4v1728221377194!5m2!1sfr!2sfr"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy">
+            </iframe>
+        </div>
+        <!-- Bouton retour à l'accueil -->
+        <button id="back-to-home-map">Retour à l'accueil</button>
+    </section>
+
     <!-- Pied de page -->
     <footer>
         <p>Contactez-nous : <a href="mailto:charleneminghi@gmail.com">charleneminghi@gmail.com</a></p>
@@ -370,3 +374,4 @@
 
 </body>
 </html>
+

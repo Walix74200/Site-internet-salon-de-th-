@@ -64,6 +64,34 @@ nav {
     border-bottom: 2px solid var(--main-color); /* Ligne de surbrillance verte */
 }
 
+/* Style pour déplacer la navigation droite à droite */
+.nav-right {
+    position: absolute;
+    right: 20px; /* Ajuste cet espace selon tes besoins */
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.nav-right ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-right ul li {
+    display: inline-block;
+}
+
+.nav-right ul li a {
+    font-size: 1.5rem; /* Taille de l'icône */
+    color: var(--main-color); /* Couleur de l'icône */
+    padding: 0.5rem;
+}
+
+.nav-right ul li a:hover {
+    color: var(--pastel-green); /* Changement de couleur au survol */
+}
+
 .nav-center {
     flex: 1;
     text-align: left;
@@ -1021,4 +1049,155 @@ html {
     font-size: 1.2rem; /* Assure une taille cohérente avec les autres */
 }
 
+/* Style pour la section Google Maps*/
+#map-section {
+    padding: 4rem 2rem;
+    text-align: center;
+    background-color: var(--bg-light);
+    min-height: 100vh;
+}
+
+.map-container {
+    margin: 2rem auto;
+    width: 80%;
+    max-width: 800px;
+}
+
+#map-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+#back-to-home-map {
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    background-color: var(--main-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#back-to-home-map:hover {
+    background-color: #333;
+    transform: scale(1.05);
+}
+
+/* Style pour le conteneur des menus */
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: black; /* Utilise la couleur principale du site */
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+}
+
+.menu-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 2rem;
+}
+
+.card {
+    width: 300px;  /* Ajuste la largeur des cartes */
+    height: 400px; /* Ajuste la hauteur des cartes */
+    perspective: 1000px;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s;
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Cache la face arrière lorsqu'on ne la voit pas */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Face avant (l'image de couverture) */
+.card-front img, .card-back img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* S'assure que l'image couvre toute la carte */
+}
+
+.flip-icon {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 0.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.flip-icon:hover {
+    transform: scale(1.2); /* Effet zoom au survol */
+}
+
+/* Face arrière (le contenu du menu) */
+.card-back {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotateY(180deg); /* Assure le retournement */
+}
+
+/* Quand la carte est retournée */
+.card.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Style pour les titres des cartes au-dessus de chaque carte */
+.menu-item-title {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: black; /* Changer la couleur du titre en noir */
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    position: relative;
+    cursor: pointer; /* Ajouter un curseur pointeur pour indiquer une interaction */
+}
+
+/* Ligne noire progressive sous le titre */
+.menu-item-title::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 3px;
+    background: black;
+    transition: width 0.3s ease; /* Effet progressif */
+    margin-top: 5px; /* Légère marge pour ne pas coller au texte */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Effet au survol : étendre la ligne */
+.menu-item-title:hover::after {
+    width: 100%;
+}
+
+/* Conteneur des cartes */
+.menu-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+}
 
