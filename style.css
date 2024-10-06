@@ -864,6 +864,56 @@ html {
     max-height: 300px; /* Hauteur maximale identique pour toutes les images */
 }
 
+/* Styles pour le conteneur avec le cadre */
+.annonce-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid var(--main-color); /* Bordure autour du contenu */
+    border-radius: 10px; /* Bordures arrondies */
+    padding: 20px;
+    background-color: #fff; /* Fond blanc */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombre pour un effet de profondeur */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    height: 400px; /* Hauteur fixe */
+    box-sizing: border-box;
+    overflow: hidden; /* S'assure que le contenu ne dépasse pas */
+}
+
+/* Agrandit légèrement le cadre et intensifie l'ombre au survol */
+.annonce-box:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.annonce-description {
+    width: 50%; /* Espace alloué au texte */
+    padding-right: 20px; /* Espace entre le texte et l'image */
+}
+
+.annonce-image {
+    width: 45%;
+    height: 100%; /* Prend toute la hauteur du cadre */
+    object-fit: cover; /* Remplir tout l'espace tout en conservant les proportions */
+    border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    .annonce-box {
+        flex-direction: column;
+        height: auto; /* Ajuste la hauteur en fonction du contenu sur les petits écrans */
+    }
+
+    .annonce-description, .annonce-image {
+        width: 100%;
+    }
+
+    .annonce-image {
+        height: auto; /* Laisse l'image s'adapter à la largeur */
+    }
+}
+
 /* Effet de vague pour la section Notre Engagement */
 #about {
     background-color: var(--pastel-green);
@@ -881,6 +931,50 @@ html {
     margin: 50px auto; /* Marges pour espacer la ligne des sections */
     border-bottom: 2px solid var(--main-color); /* Couleur et épaisseur de la ligne */
     opacity: 0.5; /* Légère transparence */
+}
+
+/* Styles pour les trois petits traits (menu hamburger) */
+/* Centrer verticalement le menu */
+.nav-left ul li {
+    display: flex;
+    align-items: center; /* Centre verticalement les éléments */
+}
+
+.menu-icon {
+    display: inline-block;
+    width: 25px; /* Largeur des traits */
+    height: 2px; /* Épaisseur des traits */
+    background-color: var(--text-color); /* Couleur des traits */
+    position: relative;
+    margin-right: 10px; /* Espace entre les traits et le texte "M&C" */
+    top: 0; /* Ajuste cette valeur pour l'alignement */
+}
+
+.menu-icon::before,
+.menu-icon::after {
+    content: '';
+    display: block;
+    width: 25px;
+    height: 2px;
+    background-color: var(--text-color);
+    position: absolute;
+    left: 0;
+}
+
+.menu-icon::before {
+    top: -8px; /* Position du trait du haut */
+}
+
+.menu-icon::after {
+    top: 8px; /* Position du trait du bas */
+}
+
+/* Ajuste le texte "M&C" pour être au même niveau que les autres liens */
+.nav-left ul li a {
+    display: flex;
+    align-items: center; /* Assure l'alignement avec l'icône */
+    padding: 0; /* Enlève les marges inutiles */
+    font-size: 1.2rem; /* Assure une taille cohérente avec les autres */
 }
 
 
