@@ -10,17 +10,16 @@ document.addEventListener('DOMContentLoaded', function () {
     menuToggle.addEventListener('click', function(e) {
         e.preventDefault();
         sidebar.classList.add('active');
-        // Ajouter la classe pour empêcher le défilement du corps (optionnel)
-        document.body.classList.add('sidebar-open');
+        document.body.classList.add('sidebar-open'); // Empêche le défilement du corps
     });
 
-    // Fermer le menu latéral en cliquant sur la croix
+    // Fermer le menu latéral
     closeBtn.addEventListener('click', function() {
         sidebar.classList.remove('active');
         document.body.classList.remove('sidebar-open');
     });
 
-    // Fermer le menu latéral en cliquant en dehors
+    // Fermer le menu en cliquant en dehors
     document.addEventListener('click', function(event) {
         if (!sidebar.contains(event.target) && !menuToggle.contains(event.target)) {
             sidebar.classList.remove('active');
@@ -32,6 +31,30 @@ document.addEventListener('DOMContentLoaded', function () {
     sidebar.addEventListener('click', function(event) {
         event.stopPropagation();
     });
+
+    const overlay = document.createElement('div');
+    overlay.classList.add('overlay');
+    document.body.appendChild(overlay);
+
+    menuToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        sidebar.classList.add('active');
+        overlay.classList.add('active');
+        document.body.classList.add('sidebar-open');
+    });
+
+    closeBtn.addEventListener('click', function() {
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.classList.remove('sidebar-open');
+    });
+
+    overlay.addEventListener('click', function() {
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.classList.remove('sidebar-open');
+    });
+
 
     // **Code pour la réservation**
     const reservationLink = document.querySelector('.reservation-btn');

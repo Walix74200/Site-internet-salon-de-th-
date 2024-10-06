@@ -111,18 +111,20 @@ nav {
 .sidebar {
     position: fixed;
     top: 0;
-    left: -300px; /* Le menu est caché en dehors de l'écran à gauche */
+    left: -300px; /* Cache le menu à gauche hors de l'écran */
     width: 300px;
     height: 100%;
-    background-color: white;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-    transition: left 0.3s ease;
+    background-color: #fff;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.2); /* Ombre pour un effet de profondeur */
+    transition: left 0.4s ease, opacity 0.3s ease; /* Transition fluide pour l'ouverture */
+    opacity: 0; /* Invisibilité initiale */
     z-index: 2000;
     overflow-y: auto;
 }
 
 .sidebar.active {
     left: 0; /* Le menu est visible lorsqu'il a la classe 'active' */
+    opacity: 1; /* Apparition du menu */
 }
 
 .sidebar-header {
@@ -135,48 +137,90 @@ nav {
 .close-btn {
     font-size: 2rem;
     cursor: pointer;
-    color: var(--text-color);
+    color: #333;
+    position: absolute;
+    top: 30px;
+    right: 20px;
 }
 
 .sidebar-menu {
     list-style: none;
     padding: 0;
     margin: 0;
+    padding-top: 60px;
 }
 
 .sidebar-menu li {
     border-bottom: 1px solid #f0f0f0;
+    padding: 1rem;
 }
 
 .sidebar-menu li a {
     display: block;
-    padding: 1rem;
-    color: var(--text-color);
+    color: #333;
     text-decoration: none;
     font-size: 1.2rem;
+    position: relative;
+    padding-bottom: 5px; /* Pour créer de l'espace pour la ligne */
+    transition: color 0.3s ease;
+}
+
+/* Ajouter le soulignement progressif */
+.sidebar-menu li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--main-color); /* Ligne verte */
+    transition: width 0.4s ease; /* Transition progressive */
+}
+
+/* Lorsque la souris survole, la ligne apparaît */
+.sidebar-menu li a:hover::after {
+    width: 100%; /* La ligne prend toute la largeur au survol */
 }
 
 .sidebar-menu li a:hover {
-    background-color: var(--bg-light);
+    color: var(--main-color); /* Couleur du texte verte au survol */
 }
 
 /* Ajustements pour le menu-toggle */
 .menu-toggle {
+    font-size: 1.5rem;
     color: black;
-    text-decoration: none;
-    font-size: 1.2rem;
-    font-weight: bold;
-    padding: 0.5rem;
     cursor: pointer;
+    padding: 10px;
+    transition: color 0.3s ease;
 }
 
 .menu-toggle:hover {
-    border-bottom: 2px solid var(--main-color);
+    color: var(--main-color); /* Changement de couleur au survol */
 }
 
 /* Empêcher le défilement du corps lorsque le menu latéral est ouvert */
 body.sidebar-open {
     overflow: hidden;
+}
+
+/* Fond transparent qui couvre la page lorsqu'on ouvre le menu */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Fond noir semi-transparent */
+    z-index: 1500;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    visibility: hidden; /* Rend l'overlay invisible par défaut */
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible; /* Rend l'overlay visible */
 }
 
 /* Section Hero avec overlay */
@@ -816,7 +860,7 @@ html {
 .annonce-container {
     position: relative;
     width: 100%;
-    height: 60vh; /* Ajustez selon la hauteur que vous voulez */
+    height: 60vh; 
     display: flex;
     align-items: center;
     justify-content: center;
