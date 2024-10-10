@@ -219,4 +219,8 @@ document.querySelector("#reservation-form").addEventListener("submit", function(
         e.preventDefault(); // Empêche l'envoi du formulaire
         alert("Merci de remplir tous les champs requis.");
     }
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> 0896302d87afa7a0c9ad4c80cec9197886105c64
