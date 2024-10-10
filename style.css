@@ -1589,7 +1589,7 @@ footer a:hover {
 .annonce-description h2 {
     font-family: 'Poppins', sans-serif;
     font-size: 2.5rem; /* Augmenter la taille du titre */
-    color: #4CAF50;
+    color: #213529;
     margin-bottom: 1rem;
 }
 
@@ -1627,9 +1627,5 @@ nav {
 nav a:hover {
     color: #4CAF50; /* Changer la couleur du texte au survol */
     transition: color 0.3s ease;
-<<<<<<< HEAD
-}
-=======
 }
 
->>>>>>> 0896302d87afa7a0c9ad4c80cec9197886105c64
