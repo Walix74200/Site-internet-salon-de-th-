@@ -15,50 +15,63 @@
 <body>
 
     <!-- Navigation -->
-    <header>
-        <nav>
-            <div class="nav-left">
-                <ul>
-                    <li>
-                        <a href="#" class="menu-toggle">
-                            <span class="menu-icon"></span>
-                            M&C
-                        </a>
-                    </li>
-                    <li><a href="#accueil">Accueil</a></li>
-                    <li><a href="#about">Notre Engagement</a></li>
-                    <li><a href="#reservation" class="reservation-btn">Réservation</a></li>
-                </ul>
-            </div>
-            <div class="nav-right">
-                <ul>
-                    <li><a href="#" id="map-btn" class="map-btn"><i class="fas fa-map-marker-alt"></i></a></li>
-                </ul>
-            </div>
-            <div class="nav-center">
-                <a href="#accueil" class="logo">
-                    <span class="company-name-line1">Salon de thé</span>
-                    <span class="company-name-line2">M&amp;C</span>
-                </a>
-            </div>
-        </nav>
-    </header>
-
-    <!-- Menu latéral -->
-    <div id="sidebar" class="sidebar">
-        <div class="sidebar-header">
-            <span class="close-btn">&times;</span>
+<header>
+    <nav>
+        <div class="nav-left">
+            <ul>
+                <li>
+                    <a href="#" class="menu-toggle">
+                        <span class="menu-icon"></span>
+                        M&C
+                    </a>
+                </li>
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#about">Notre Engagement</a></li>
+                <li><a href="#reservation" class="reservation-btn">Réservation</a></li>
+            </ul>
         </div>
-        <ul class="sidebar-menu">
-            <li><a href="#services">Nos Services</a></li>
-            <li><a href="#formules">Formules</a></li>
-            <li><a href="#menu-section">Carte des Menus</a></li>
-            <li><a href="#creations">Mes Créations</a></li>
-        </ul>
-    </div> 
+        <div class="nav-right">
+            <ul>
+                <li><a href="#" id="map-btn" class="map-btn"><i class="fas fa-map-marker-alt"></i></a></li>
+                <li><a href="#avis" id="avis-btn" class="avis-btn">Avis</a></li> <!-- Nouvel onglet Avis -->
+            </ul>
+        </div>
+        <div class="nav-center">
+            <a href="#accueil" class="logo">
+                <span class="company-name-line1">Salon de thé</span>
+                <span class="company-name-line2">M&amp;C</span>
+            </a>
+        </div>
+    </nav>
+</header>
 
+
+   <!-- Menu latéral -->
+<div id="sidebar" class="sidebar">
+    <div class="sidebar-header">
+        <span class="sidebar-logo">M&amp;C</span> <!-- Ajout du logo en tant que texte -->
+        <span class="close-btn">&times;</span>
+    </div>
+    <ul class="sidebar-menu">
+        <li><a href="#services">Nos Services</a></li>
+        <li><a href="#formules">Formules</a></li>
+        <li><a href="#menu-section">Carte des Menus</a></li>
+        <li><a href="#creations">Mes Créations</a></li>
+    </ul>
+</div>
+
+
+
+
+
+   
     <!-- Section Accueil -->
-    <section class="hero" id="accueil">
+<section class="hero" id="accueil">
+    <!-- Introduction -->
+    <div class="intro-text">
+        <h1>Bienvenue au Salon de Thé M&C</h1>
+        <p>Découvrez un lieu où chaque thé raconte une histoire, et où chaque pâtisserie devient une œuvre d'art. Chez M&C, l'excellence et la convivialité se rencontrent pour créer des moments inoubliables.</p>
+    </div>
         <div class="annonce-container">
             <div class="annonce-slide">
                 <div class="annonce-box">
@@ -103,7 +116,7 @@
             </div>
             <div class="about-text">
                 <p><strong>Notre impact écologique compte.</strong> Le secteur de la restauration génère environ 11 % des émissions de CO₂ en France. Pour changer cela, je propose à mes clients des produits locaux et bio, favorisant les circuits courts et sans pesticides. Toutes nos pâtisseries et plats sont faits maison, évitant les produits industriels emballés dans du plastique non recyclé. Nous privilégions le recyclage et la réduction du gaspillage, avec le tri sélectif et la vente des produits de la veille. En nous rendant visite, vous contribuez à la préservation de notre planète.</p>
-                <p>De plus, nous offrons des jeux de société, des mangas et des romans pour vous divertir. Notre salon de thé, à l'esprit familial et convivial, organise également des soirées à thème avec des repas uniques préparés par nos soins. <strong>Nous espérons vous voir nombreux !</strong></p>
+                <p>De plus, nous offrons des jeux de société, des mangas et des romans pour vous divertir. Notre salon de thé, à l'esprit familial et convivial, organise également des soirées à thème avec des repas uniques préparés par nos soins. <strong>Nous espérons vous voir nombreux !</strong></p>
             </div>
         </div>
     </section>
@@ -119,6 +132,9 @@
             <li>Soirées à thème</li>
         </ul>
     </section>
+
+   
+
 
     <!-- Section Formules -->
     <section id="formules">
@@ -351,6 +367,46 @@
         <button id="back-to-home">Retour à l'accueil</button>
     </section>
 
+     <!-- Section des avis améliorée -->
+<section class="avis-container">
+    <h2>Avis des clients</h2>
+    <div class="avis-box">
+        <h3>Adam Saidane</h3>
+        <p>Un salon de thé magnifique, j'ai adoré les pâtisseries !</p>
+        <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+        </div>
+    </div>
+    
+    <div class="avis-box">
+        <h3>Jean Dupont</h3>
+        <p>Une expérience merveilleuse, le service est impeccable !</p>
+        <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+    </div>
+
+    <!-- Formulaire pour les avis -->
+    <div class="formulaire-avis">
+        <h3>Laisser un avis</h3>
+        <form action="#">
+            <input type="text" placeholder="Nom" required>
+            <textarea placeholder="Votre avis" required></textarea>
+            <input type="submit" value="Envoyer">
+        </form>
+    </div>
+</section>
+
+
+
     <!-- Section Google Maps cachée -->
     <section id="map-section" style="display: none;">
         <h2>Notre Localisation</h2>
@@ -365,13 +421,19 @@
     </section>
 
     <!-- Pied de page -->
-    <footer>
-        <p>Contactez-nous : <a href="mailto:charleneminghi@gmail.com">charleneminghi@gmail.com</a></p>
-    </footer>
+<footer>
+    <p>Contactez-nous : <a href="mailto:charleneminghi@gmail.com">charleneminghi@gmail.com</a></p>
+
+    <!-- Section des réseaux sociaux -->
+    <div class="social-media">
+        <a href="https://www.facebook.com/votre-page" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/votre-page" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+</footer>
+
 
     <!-- Script JavaScript pour les interactions -->
     <script src="script.js"></script>
 
 </body>
 </html>
-

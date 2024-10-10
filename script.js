@@ -210,3 +210,13 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+document.querySelector("#reservation-form").addEventListener("submit", function(e) {
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let guests = document.getElementById("guests").value;
+    if(name === "" || email === "" || guests === "") {
+        e.preventDefault(); // Empêche l'envoi du formulaire
+        alert("Merci de remplir tous les champs requis.");
+    }
+});

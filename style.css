@@ -155,11 +155,22 @@ nav {
     opacity: 1; /* Apparition du menu */
 }
 
+/* Logo dans le menu latéral */
 .sidebar-header {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
     padding: 1rem;
     border-bottom: 1px solid #ccc;
+}
+
+/* Style du logo textuel M&C dans le menu latéral */
+.sidebar-logo {
+    font-family: 'Great Vibes', cursive; /* Utilise une police élégante */
+    font-size: 2.5rem; /* Taille du logo */
+    color: #4CAF50; /* Couleur verte similaire à l'image */
+    margin-right: auto;
+    display: inline-block;
 }
 
 .close-btn {
@@ -928,13 +939,18 @@ html {
 }
 
 .annonce-image {
-    width: 55%; /* L'image occupe plus de place */
-    height: auto;
-    object-fit: cover; /* S'assure que l'image garde ses proportions */
-    border-radius: 10px;
-    max-width: 500px; /* Taille maximale des images */
-    max-height: 300px; /* Hauteur maximale identique pour toutes les images */
+    width: 100%; /* L'image prend toute la largeur du conteneur */
+    height: auto; /* Laisse la hauteur s'adapter à la largeur pour garder les proportions */
+    object-fit: cover; /* S'assure que l'image se redimensionne proprement sans se déformer */
+    border-radius: 10px; /* Ajoute des bords arrondis pour un style plus élégant */
 }
+
+.annonce-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 
 /* Styles pour le conteneur avec le cadre */
 .annonce-box {
@@ -1094,59 +1110,103 @@ html {
     text-transform: uppercase;
 }
 
+
+/* Style de la section Carte des Menus */
+/* Section carte des menus */
 .menu-container {
     display: flex;
     justify-content: space-around;
-    align-items: center;
-    padding: 2rem;
+    flex-wrap: wrap;
+    padding: 2rem 1rem;
+}
+
+.menu-item {
+    width: 300px;
+    height: 450px; /* Hauteur de la carte */
+    perspective: 1500px; /* Effet de profondeur pour le flip */
+    position: relative;
+    overflow: visible; /* S'assure que rien n'est rogné */
 }
 
 .card {
-    width: 300px;  /* Ajuste la largeur des cartes */
-    height: 400px; /* Ajuste la hauteur des cartes */
-    perspective: 1000px;
-}
-
-.card-inner {
     position: relative;
     width: 100%;
     height: 100%;
     transform-style: preserve-3d;
-    transition: transform 0.8s;
+    transition: transform 1s ease-in-out; /* Transition pour la rotation */
+    overflow: visible; /* Assure que tout est visible */
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
 }
 
 .card-front, .card-back {
     position: absolute;
     width: 100%;
     height: 100%;
-    backface-visibility: hidden; /* Cache la face arrière lorsqu'on ne la voit pas */
+    backface-visibility: hidden; /* Cache la face arrière quand elle n'est pas visible */
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* La face arrière est initialement cachée */
+.card-back {
+    transform: rotateY(180deg);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* Effet de retournement (flip) de la carte */
+.menu-item:hover .card-inner {
+    transform: rotateY(180deg); /* Rotation sur l'axe Y pour voir l'arrière */
+}
+
+/* Zoom important sur l'image au dos de la carte (quand elle est visible) */
+.menu-item:hover .card-back img {
+    transform: scale(1.0); /* Zoom plus important */
+    transition: transform 0.6s ease-in-out;
+}
+
+/* Empêcher la face avant de se zoomer */
+.menu-item:hover .card-front img {
+    transform: scale(1); /* Pas de zoom sur la face avant */
+}
+
+/* Style des images pour occuper toute la carte */
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* L'image couvre toute la carte */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Ajout d'un effet d'ombre et de zoom lors du survol de la carte */
+.menu-item:hover .card {
+    transform: scale(1.2); /* Agrandit la carte pour plus de visibilité */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Ombre pour un effet 3D */
+}
+
+/* Empêche le zoom sur la face avant */
+.menu-item:hover .card-front img {
+    transform: scale(1); /* Pas de zoom sur la face avant */
+}
+
+/* Effet de zoom et de rotation sur l'icône au survol */
+.card:hover .flip-icon {
+    transform: scale(1.2) rotate(180deg); /* Effet d'agrandissement et de rotation sur l'icône */
 }
 
 /* Face avant (l'image de couverture) */
 .card-front img, .card-back img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* S'assure que l'image couvre toute la carte */
-}
-
-.flip-icon {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    font-size: 1.5rem;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 0.5rem;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-.flip-icon:hover {
-    transform: scale(1.2); /* Effet zoom au survol */
+    object-fit: cover; /* L'image couvre toute la carte */
 }
 
 /* Face arrière (le contenu du menu) */
@@ -1172,7 +1232,7 @@ html {
     margin-bottom: 1rem;
     text-transform: uppercase;
     position: relative;
-    cursor: pointer; /* Ajouter un curseur pointeur pour indiquer une interaction */
+    cursor: pointer;
 }
 
 /* Ligne noire progressive sous le titre */
@@ -1183,7 +1243,7 @@ html {
     height: 3px;
     background: black;
     transition: width 0.3s ease; /* Effet progressif */
-    margin-top: 5px; /* Légère marge pour ne pas coller au texte */
+    margin-top: 5px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -1201,3 +1261,370 @@ html {
     margin-bottom: 2rem;
 }
 
+
+/* Style de la section des avis */
+.avis-container {
+    background-color: #f7f7f7;
+    padding: 4rem 2rem;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 4rem;
+    animation: slideInUp 1s ease-out;
+}
+
+/* Animation pour l'apparition de la section */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.avis-container h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.8rem;
+    color: #4CAF50;
+    margin-bottom: 2.5rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    position: relative;
+}
+
+.avis-container h2::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    width: 60px;
+    height: 4px;
+    background-color: #4CAF50;
+    transform: translateX(-50%);
+}
+
+.avis-box {
+    padding: 2rem;
+    background-color: white;
+    border-radius: 15px;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 6px solid #4CAF50;
+    position: relative;
+    overflow: hidden;
+}
+
+.avis-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.avis-box:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.avis-box h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 0.7rem;
+}
+
+.avis-box p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.avis-box .stars {
+    color: #FFD700;
+    margin-top: 1rem;
+}
+
+.avis-box .stars i {
+    font-size: 1.5rem;
+    margin-right: 0.3rem;
+    transition: transform 0.3s ease;
+}
+
+.avis-box .stars i:hover {
+    transform: scale(1.2);
+}
+
+/* Améliorations du formulaire */
+.formulaire-avis {
+    padding: 2.5rem;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    margin-top: 3rem;
+    animation: fadeIn 1.5s ease;
+}
+
+.formulaire-avis h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.3rem;
+    color: #4CAF50;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+.formulaire-avis h3::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    width: 50px;
+    height: 3px;
+    background-color: #4CAF50;
+    transform: translateX(-50%);
+}
+
+.formulaire-avis input,
+.formulaire-avis textarea {
+    width: 100%;
+    padding: 1.2rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin-bottom: 1.7rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    color: #333;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.formulaire-avis input:focus,
+.formulaire-avis textarea:focus {
+    border: 1px solid #4CAF50;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.2);
+}
+
+.formulaire-avis input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1.3rem;
+    padding: 1rem 2.5rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.formulaire-avis input[type="submit"]:hover {
+    background-color: #388E3C;
+    transform: scale(1.05);
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .avis-container {
+        padding: 2rem 1rem;
+    }
+
+    .avis-container h2 {
+        font-size: 2.3rem;
+    }
+
+    .avis-box {
+        padding: 1.5rem;
+    }
+
+    .avis-box h3 {
+        font-size: 1.5rem;
+    }
+
+    .avis-box p {
+        font-size: 1rem;
+    }
+
+    .formulaire-avis {
+        padding: 1.5rem;
+    }
+
+    .formulaire-avis h3 {
+        font-size: 1.8rem;
+    }
+
+    .formulaire-avis input,
+    .formulaire-avis textarea {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+
+    .formulaire-avis input[type="submit"] {
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+    }
+}
+
+
+/* Style du pied de page */
+footer {
+    background-color: var(--main-color); /* Vert principal */
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+    position: relative;
+}
+
+/* Style des liens du pied de page */
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Style pour les icônes des réseaux sociaux */
+.social-media {
+    margin-top: 1rem;
+}
+
+.social-media a {
+    margin: 0 10px;
+    color: white;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.social-media a:hover {
+    color: var(--pastel-green); /* Change la couleur des icônes au survol */
+}
+
+
+        .intro-text {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        .intro-text h1 {
+            font-size: 3rem;
+            font-family: 'Great Vibes', cursive;
+            color: #171c17; /* Couleur verte */
+        }
+
+        .intro-text p {
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+
+
+
+        .hero {
+            padding: 0.1rem 0; /* Réduction encore plus forte du padding vertical */
+            margin-bottom: 0; /* Pas de marge supplémentaire en bas */
+        }
+        
+        .intro-text {
+            text-align: center;
+            padding: 0.1rem 0; /* Réduction du padding interne de la section intro */
+            margin-top: 0; /* Supprime complètement la marge supérieure */
+            opacity: 0;
+            transform: translateY(-5px); /* Réduction du décalage de l'animation */
+            animation: fadeInSlide 1.5s ease-out forwards;
+        }
+        
+
+        /* Animation inchangée */
+        @keyframes fadeInSlide {
+            to {
+                opacity: 1;
+                transform: translateY(0); /* Le texte revient à sa position normale */
+            }
+        }
+
+
+        .intro-text h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: #4CAF50; /* Vert principal du site */
+        }
+
+        .intro-text p {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            color: #333;
+            margin-top: 1rem;
+            animation-delay: 0.5s; /* Le texte apparaît après le titre */
+        }
+
+        .intro-text h1:hover {
+            text-shadow: 2px 2px 5px rgba(76, 175, 80, 0.7); /* Ombre douce lors du survol */
+            transform: scale(1.05); /* Légère agrandissement au survol */
+            transition: transform 0.3s ease, text-shadow 0.3s ease;
+        }
+
+
+       /* Section de présentation des pâtisseries avec ajustement d'image */
+.annonce-container {
+    display: flex;
+    justify-content: space-between; /* Espace équilibré entre texte et image */
+    align-items: center; /* Aligne verticalement le contenu */
+    padding: 2rem 1rem; /* Ajustement de l'espace interne */
+}
+
+.annonce-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%; /* Prend tout l'espace disponible */
+}
+
+.annonce-description {
+    flex: 1; /* Le texte occupe une partie de la largeur */
+    padding-right: 2rem; /* Ajoute un espacement entre le texte et l'image */
+}
+
+.annonce-description h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem; /* Augmenter la taille du titre */
+    color: #4CAF50;
+    margin-bottom: 1rem;
+}
+
+.annonce-description p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem; /* Ajustement de la taille du texte */
+    color: #333;
+}
+
+.annonce-image {
+    flex: 2; /* L'image prend aussi la moitié de l'espace */
+    width: 100%;
+    height: auto;
+    max-width: 400px; /* Taille maximale de l'image */
+    height: 250px; /* Hauteur uniforme pour toutes les images */
+    object-fit: cover; /* Permet de remplir l'espace sans déformer l'image */
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.annonce-box:hover .annonce-image {
+    transform: scale(1.05); /* Effet de zoom au survol */
+}
+
+
+nav {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 1000;
+    padding: 15px 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+nav a:hover {
+    color: #4CAF50; /* Changer la couleur du texte au survol */
+    transition: color 0.3s ease;
+}
